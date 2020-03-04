@@ -27,7 +27,7 @@ public class Valoracion extends Dato{
     private TIPO_VALORACION key = TIPO_VALORACION.GENERAL;
 
     public TIPO_VALORACION getKey() {
-        return key;
+            return key;
     }
 
     public void setKey(TIPO_VALORACION key) {

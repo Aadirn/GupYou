@@ -33,8 +33,6 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
 
     private void cargarValoraciones() {
 
-
-
         FragmentTransaction trans = manager.beginTransaction();
         trans.replace(R.id.perfil_usuario_contenedor,new ValoracionFragment(this.user.uid),"valoraciones");
         trans.commitNow();
