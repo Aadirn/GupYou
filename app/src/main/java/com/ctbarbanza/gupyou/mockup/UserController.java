@@ -1,5 +1,7 @@
 package com.ctbarbanza.gupyou.mockup;
 
+import android.util.Log;
+
 import com.ctbarbanza.gupyou.models.Commentario;
 import com.ctbarbanza.gupyou.models.User;
 import com.ctbarbanza.gupyou.models.Valoracion;
@@ -30,8 +32,9 @@ public class UserController {
 
     private void setCurrentUser(){
         Random random = new Random();
-        User[] values = (User[]) users.values().toArray(); 
-        this.currentUser = values[random.nextInt(values.length)];
+        Object[] values = (Object[]) users.values().toArray();
+        Object obj = values[random.nextInt(values.length)];
+        this.currentUser = (User)obj;
     }
 
     private void generateDatos(){
@@ -126,6 +129,7 @@ public class UserController {
     }
 
     public List<Valoracion> getValoraciones(String uid){
+        Log.d("FRG","Uid:"+uid+" - "+this.valoraciones.containsKey(uid) );
         if (this.valoraciones.containsKey(uid)){
             return this.valoraciones.get(uid);
         }

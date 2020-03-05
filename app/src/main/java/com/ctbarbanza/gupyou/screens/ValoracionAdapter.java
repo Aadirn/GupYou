@@ -2,12 +2,14 @@ package com.ctbarbanza.gupyou.screens;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ctbarbanza.gupyou.R;
 import com.ctbarbanza.gupyou.models.Valoracion;
@@ -17,9 +19,7 @@ import java.util.List;
 
 import listeners.ValoracionAdapterListener;
 
-/**
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class ValoracionAdapter extends RecyclerView.Adapter<ValoracionAdapter.ValoracionHolder> {
 
     private final ValoracionAdapterListener valoracionListener;
@@ -40,14 +40,17 @@ public class ValoracionAdapter extends RecyclerView.Adapter<ValoracionAdapter.Va
     @Override
     public void onBindViewHolder(final ValoracionHolder holder, int position) {
         final Valoracion item = valoraciones.get(position);
-    //De alguna manera mostrar la valoracion
-        String texto = "";
+        //De alguna manera mostrar la valoracion <= MEGA COLLEJA
+        String texto = ""+item.getValor();
+        holder.txt.setText(texto);
 
         holder.lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(valoracionListener!=null){
-                    valoracionListener.click(item);
+                    //Context ctx = v.getContext();
+                    Toast toast = Toast.makeText(v.getContext(), "UPS! Esto es una funcionalidad premium ;)", Toast.LENGTH_LONG);
+                    valoracionListener.click(toast);
                 }
             }
         });

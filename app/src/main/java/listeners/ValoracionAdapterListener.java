@@ -1,7 +1,8 @@
 package listeners;
 
-import com.ctbarbanza.gupyou.models.Valoracion;
+
+import android.widget.Toast;
 
 public interface ValoracionAdapterListener {
-    void click(Valoracion item);
+    void click(Toast tst);
 }

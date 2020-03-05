@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.ctbarbanza.gupyou.mockup.UserController;
 import com.ctbarbanza.gupyou.models.User;
 import com.ctbarbanza.gupyou.screens.ValoracionFragment;
 import com.orhanobut.hawk.Hawk;
@@ -20,12 +21,7 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_perfil_usuario);
 
-        if (Hawk.contains("user")){
-            user = Hawk.get("user");
-        }
-
-        DbController.get(user.uid);
-
+        user = UserController.init().getCurrentUser();
 
         updateProfileData();
         cargarValoraciones();
@@ -34,7 +30,8 @@ public class PerfilUsuarioActivity extends AppCompatActivity {
     private void cargarValoraciones() {
 
         FragmentTransaction trans = manager.beginTransaction();
-        trans.replace(R.id.perfil_usuario_contenedor,new ValoracionFragment(this.user.uid),"valoraciones");
+        ValoracionFragment frg = ValoracionFragment.newInstance(this.user.uid);
+        trans.replace(R.id.perfil_usuario_contenedor, frg, "valoraciones");
         trans.commitNow();
 
     }
